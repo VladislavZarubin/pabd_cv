@@ -1,7 +1,8 @@
 """ Module docstring """
 from flask import Flask, request
 import tensorflow as tf
-
+import json
+import numpy as np
 import os
 import pathlib
 
@@ -37,10 +38,8 @@ def classify_binary():
     img = tf.io.decode_jpeg(data)
     img_t = tf.expand_dims(img, axis=0)
     img_t = tf.image.resize(img_t, (180, 180))
-    model = tf.keras.models.load_model('models\\my_model')
-    out = model(img_t)
-    print(out)
-    dog_probability = out.numpy()[0, 0]
+    predictions = model.predict(img_t)
+    dog_probability = float(predictions[0])
     print(dog_probability)
     idx = dog_probability > 0.5
     return ('Cat', 'Dog')[idx]
