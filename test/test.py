@@ -27,7 +27,7 @@ class MyTestCase(unittest.TestCase):
         self.assertIn(expected, out)
 
     def test_binary_classify(self):
-        img = PIL.Image.open('../data/cat.jpg')
+        img = PIL.Image.open('../data/dog.jpg')
         buffer = io.BytesIO()
         img.save(buffer, format='JPEG')
 
