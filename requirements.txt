@@ -9,6 +9,5 @@ tensorflow
 dvc
 pylint
 boto3
-tensorflow-cpu
 jupyter
 python-dotenv
